@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechCell Store – Celulares & Acessórios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue:#0a2463;--blue-mid:#1a4dcc;--blue-light:#e8f0fe;
+--accent:#f7b731;--accent2:#ff4757;--green:#2ed573;
+--whats:#25d366;--white:#fff;
+--gray-50:#f8f9fc;--gray-100:#eef0f5;--gray-200:#d1d5e0;
+--gray-500:#7c8599;--gray-800:#1c2233;
+--radius:14px;--shadow:0 6px 28px rgba(10,36,99,.11);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--gray-800);font-size:15px}
+.topbar{background:var(--blue);color:#fff;text-align:center;font-size:13px;padding:7px 20px}
+.topbar span{color:var(--accent);font-weight:700}
+header{background:#fff;border-bottom:2px solid var(--blue-light);position:sticky;top:0;z-index:999;box-shadow:0 2px 16px rgba(10,36,99,.07)}
+.header-inner{max-width:1280px;margin:auto;display:flex;align-items:center;gap:20px;padding:12px 24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:44px;height:44px;background:var(--blue);border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--accent);flex-shrink:0}
+.logo-text{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--blue);line-height:1.1}
+.logo-text span{color:var(--blue-mid);font-size:11px;display:block;font-weight:500;letter-spacing:1px}
+.search-bar{flex:1;display:flex;max-width:520px;margin:0 auto}
+.search-bar input{width:100%;padding:10px 16px;border:2px solid var(--blue-light);border-radius:10px 0 0 10px;font-size:14px;font-family:inherit;outline:none;transition:.2s;background:var(--gray-50)}
+.search-bar input:focus{border-color:var(--blue-mid)}
+.search-bar button{background:var(--blue-mid);color:#fff;border:none;padding:10px 18px;border-radius:0 10px 10px 0;cursor:pointer;font-size:16px}
+.btn-whats-hd{background:var(--whats);color:#fff;border:none;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap}
+.btn-whats-hd:hover{background:#1db954}
+.btn-whats-hd svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+nav{background:var(--blue)}
+.nav-inner{max-width:1280px;margin:auto;display:flex;padding:0 24px;overflow-x:auto}
+.nav-inner a{color:#fff;text-decoration:none;font-size:13.5px;font-weight:500;padding:13px 18px;white-space:nowrap;border-bottom:3px solid transparent;transition:.2s;display:flex;align-items:center;gap:5px}
+.nav-inner a:hover,.nav-inner a.active{border-bottom-color:var(--accent);color:var(--accent)}
+.ticker{background:var(--accent);color:var(--blue);font-family:'Syne',sans-serif;font-weight:700;font-size:13px;padding:8px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-block;animation:ticker 30s linear infinite}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* HERO */
+.hero{background:linear-gradient(125deg,#0a2463 0%,#1a3a8f 55%,#0f2460 100%);color:#fff;padding:50px 24px;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;right:-60px;top:-80px;width:380px;height:380px;background:rgba(247,183,49,.06);border-radius:50%}
+.hero-inner{max-width:1280px;margin:auto;display:flex;align-items:center;gap:40px;position:relative;z-index:1}
+.hero-text{flex:1}
+.hero-badge{display:inline-block;background:var(--accent);color:var(--blue);font-family:'Syne',sans-serif;font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;margin-bottom:14px;letter-spacing:1px;text-transform:uppercase}
+.hero-text h1{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,44px);font-weight:800;line-height:1.15;margin-bottom:14px}
+.hero-text h1 em{color:var(--accent);font-style:normal}
+.hero-text p{font-size:16px;opacity:.85;margin-bottom:28px;max-width:480px;line-height:1.6}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:var(--blue);font-family:'Syne',sans-serif;font-weight:800;font-size:14px;padding:13px 26px;border-radius:10px;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.btn-p:hover{background:#f9c422;transform:translateY(-2px)}
+.btn-o{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4);font-family:'Syne',sans-serif;font-weight:700;font-size:14px;padding:11px 24px;border-radius:10px;text-decoration:none;transition:.2s}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.09)}
+.hero-device{flex-shrink:0;display:flex;gap:16px}
+.hero-phone{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:18px 14px;text-align:center;width:140px;transition:.2s}
+.hero-phone:hover{background:rgba(255,255,255,.15);transform:translateY(-4px)}
+.hero-phone img{width:80px;height:100px;object-fit:contain;display:block;margin:0 auto 10px}
+.hero-phone p{font-size:11.5px;font-weight:600;opacity:.9;margin-bottom:4px}
+.hero-phone .hp{color:var(--accent);font-family:'Syne',sans-serif;font-size:12px;font-weight:800}
+/* CATS */
+.cats{background:#fff;border-bottom:1px solid var(--gray-100)}
+.cats-inner{max-width:1280px;margin:auto;padding:0 24px;display:flex;overflow-x:auto}
+.cat-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 18px;cursor:pointer;text-decoration:none;color:var(--gray-800);border-bottom:3px solid transparent;white-space:nowrap;transition:.2s;flex-shrink:0}
+.cat-btn:hover,.cat-btn.active{border-bottom-color:var(--blue-mid);color:var(--blue-mid)}
+.cat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.cat-btn span{font-size:12px;font-weight:600}
+/* SECTION */
+.section{padding:40px 24px}
+.section-inner{max-width:1280px;margin:auto}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.section-head h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--blue)}
+.section-head h2 em{color:var(--blue-mid);font-style:normal}
+.sec-sub{font-size:14px;color:var(--gray-500);margin-bottom:22px}
+.see-all{color:var(--blue-mid);text-decoration:none;font-size:13px;font-weight:700}
+/* PRODUCT GRID */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(198px,1fr));gap:16px}
+.product-card{background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius);overflow:hidden;transition:.22s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.product-card:hover{border-color:var(--blue-mid);box-shadow:var(--shadow);transform:translateY(-4px)}
+.product-img{background:var(--gray-50);height:190px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-img img{width:100%;height:100%;object-fit:contain;padding:14px;transition:.3s}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-img .fallback{font-size:64px;display:none}
+.badge-sale{position:absolute;top:10px;left:10px;background:var(--accent2);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;z-index:1}
+.badge-novo{position:absolute;top:10px;left:10px;background:var(--blue-mid);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;z-index:1}
+.badge-top{position:absolute;top:10px;left:10px;background:#7c3aed;color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;z-index:1}
+.product-info{padding:13px}
+.product-info h3{font-size:13.5px;font-weight:600;line-height:1.35;margin-bottom:5px}
+.lbl-apple{display:inline-block;background:#f0f0f0;color:#555;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.lbl-xiaomi{display:inline-block;background:#ff6900;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.lbl-other{display:inline-block;background:#1a4dcc;color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.price-old{font-size:12px;color:var(--gray-500);text-decoration:line-through}
+.price-new{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--blue)}
+.price-pix{font-size:11px;color:#0a8a3a;font-weight:700}
+.installment{font-size:11.5px;color:var(--gray-500);margin-top:2px}
+.btn-add{display:block;width:100%;margin-top:10px;background:var(--blue-mid);color:#fff;border:none;padding:9px;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;text-align:center;text-decoration:none}
+.btn-add:hover{background:var(--blue)}
+/* BANNERS */
+.banners{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.banner{border-radius:18px;padding:28px 26px;color:#fff;display:flex;align-items:center;justify-content:space-between;text-decoration:none;overflow:hidden}
+.b-blue{background:linear-gradient(120deg,#0a2463 0%,#1a4dcc 100%)}
+.b-orange{background:linear-gradient(120deg,#e65100 0%,#f9a825 100%)}
+.b-green{background:linear-gradient(120deg,#0d7055 0%,#1db954 100%)}
+.b-purple{background:linear-gradient(120deg,#4a1580 0%,#9c27b0 100%)}
+.banner h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin-bottom:6px}
+.banner p{font-size:13px;opacity:.85;max-width:200px;line-height:1.45}
+.b-badge{display:inline-block;background:var(--accent);color:var(--blue);font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-bottom:8px}
+.b-img{width:110px;height:130px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25))}
+/* BRANDS */
+.brands-strip{background:var(--gray-50);padding:28px 24px;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100)}
+.brands-inner{max-width:1280px;margin:auto}
+.brands-inner h3{text-align:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gray-500);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+.brands-logos{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.brand-pill{background:#fff;border:1.5px solid var(--gray-200);border-radius:30px;padding:9px 20px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--gray-800);transition:.2s;text-decoration:none}
+.brand-pill:hover{border-color:var(--blue-mid);color:var(--blue-mid)}
+/* FEATURES */
+.features{background:var(--blue);color:#fff;padding:36px 24px}
+.features-inner{max-width:1280px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px}
+.feature{text-align:center}
+.feature .fi{font-size:32px;margin-bottom:10px;display:block}
+.feature h4{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:5px}
+.feature p{font-size:13px;opacity:.7;line-height:1.5}
+/* FOOTER */
+footer{background:var(--gray-800);color:#fff;padding:40px 24px 24px}
+.footer-inner{max-width:1280px;margin:auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.footer-brand{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:10px}
+.footer-brand span{color:var(--accent)}
+.footer-desc{font-size:13px;opacity:.6;line-height:1.7;margin-bottom:16px}
+.footer-col h5{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;opacity:.5;margin-bottom:14px}
+.footer-col a{display:block;color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;margin-bottom:8px;transition:.2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:12px;opacity:.45}
+.pay-badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:rgba(255,255,255,.65);font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:5px}
+/* WHATS FLOAT */
+.whats-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.whats-bubble{background:rgba(255,255,255,.96);border:1px solid var(--gray-100);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray-800);box-shadow:0 4px 20px rgba(0,0,0,.12);white-space:nowrap;animation:popIn .4s ease}
+@keyframes popIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.whats-btn{width:62px;height:62px;background:var(--whats);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.4);text-decoration:none;transition:.2s;animation:pulse 2.5s infinite}
+.whats-btn:hover{transform:scale(1.09);background:#1db954}
+.whats-btn svg{width:32px;height:32px;fill:#fff}
+@keyframes pulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.4)}50%{box-shadow:0 8px 36px rgba(37,211,102,.65)}}
+::-webkit-scrollbar{height:4px;width:4px}
+::-webkit-scrollbar-thumb{background:var(--gray-200);border-radius:4px}
+@media(max-width:900px){.hero-device{display:none}.footer-grid{grid-template-columns:1fr 1fr}.banners{grid-template-columns:1fr}}
+@media(max-width:600px){.header-inner{flex-wrap:wrap;gap:10px}.search-bar{order:3;max-width:100%;width:100%}.footer-grid{grid-template-columns:1fr}.whats-bubble{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">🚚 Frete <span>GRÁTIS</span> acima de R$99 &nbsp;|&nbsp; ⚡ Entrega Expressa &nbsp;|&nbsp; 💳 Parcele em até 12x sem juros</div>
+
+<div class="ticker"><span class="ticker-inner">📱 iPhone 16 Pro Max – Capinha a partir de R$29,90 &nbsp;🎧 Fones Bluetooth com 40% OFF &nbsp;🔋 Carregadores GaN 65W &nbsp;🛡️ Películas 9H Full Cover &nbsp;📦 Frete Grátis acima de R$99 &nbsp;🟠 Xiaomi 14 Ultra – Capinha disponível &nbsp;⚫ POCO X6 Pro disponível &nbsp;🔵 Samsung S24 Ultra disponível &nbsp;📱 iPhone 16 Pro Max – Capinha a partir de R$29,90 &nbsp;🎧 Fones Bluetooth com 40% OFF &nbsp;🔋 Carregadores GaN 65W &nbsp;🛡️ Películas 9H Full Cover &nbsp;📦 Frete Grátis acima de R$99 &nbsp;</span></div>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo"><div class="logo-icon">TC</div><div class="logo-text">TechCell<span>STORE</span></div></a>
+    <div class="search-bar"><input type="text" placeholder="Capinha, película, carregador, fone..."><button>🔍</button></div>
+    <a href="https://wa.me/5544997230648" target="_blank" class="btn-whats-hd">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      (44) 99723-0648
+    </a>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#iphones" class="active">🍎 iPhones</a>
+    <a href="#xiaomis">🟠 Xiaomi</a>
+    <a href="#capinhas">🛡️ Capinhas</a>
+    <a href="#peliculas">🔲 Películas</a>
+    <a href="#carregadores">⚡ Carregadores</a>
+    <a href="#fones">🎧 Fones</a>
+    <a href="#ofertas" style="color:#f7b731;font-weight:700">🔥 Ofertas</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🔥 A loja mais completa!</div>
+      <h1>iPhone & Xiaomi com os <em>melhores preços</em></h1>
+      <p>Capinhas, películas, carregadores e fones para todas as marcas. Qualidade garantida e entrega rápida.</p>
+      <div class="hero-btns">
+        <a href="#iphones" class="btn-p">Ver iPhones 🍎</a>
+        <a href="https://wa.me/5544997230648" target="_blank" class="btn-o">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-device">
+      <div class="hero-phone">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1723852654135" alt="iPhone 16 Pro Max">
+        <p>iPhone 16 Pro Max</p><div class="hp">Capinha R$44,90</div>
+      </div>
+      <div class="hero-phone">
+        <img src="https://fdn2.gsmarena.com/vv/bigpic/xiaomi-14-ultra.jpg" alt="Xiaomi 14 Ultra">
+        <p>Xiaomi 14 Ultra</p><div class="hp">Capinha R$34,90</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cats">
+  <div class="cats-inner">
+    <a href="#iphones" class="cat-btn active"><div class="cat-icon" style="background:#f0f0f0">🍎</div><span>iPhone</span></a>
+    <a href="#xiaomis" class="cat-btn"><div class="cat-icon" style="background:#fff0e8">🟠</div><span>Xiaomi</span></a>
+    <a href="#capinhas" class="cat-btn"><div class="cat-icon" style="background:#e8f0fe">🛡️</div><span>Capinhas</span></a>
+    <a href="#peliculas" class="cat-btn"><div class="cat-icon" style="background:#e8fef0">🔲</div><span>Películas</span></a>
+    <a href="#carregadores" class="cat-btn"><div class="cat-icon" style="background:#fff8e0">⚡</div><span>Carregadores</span></a>
+    <a href="#fones" class="cat-btn"><div class="cat-icon" style="background:#fce8ff">🎧</div><span>Fones</span></a>
+    <a href="#ofertas" class="cat-btn"><div class="cat-icon" style="background:#ffe8e8">🔥</div><span>Ofertas</span></a>
+  </div>
+</div>
+
+<!-- ===== iPHONES ===== -->
+<section class="section" id="iphones">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>🍎 <em>iPhones</em> — Todos os modelos</h2>
+      <a href="https://wa.me/5544997230648" target="_blank" class="see-all">Ver todos →</a>
+    </div>
+    <p class="sec-sub">Capinhas e acessórios para cada modelo Apple disponíveis no estoque</p>
+    <div class="products-grid" id="iphone-grid"></div>
+  </div>
+</section>
+
+<div class="section" style="padding-top:0;padding-bottom:24px">
+  <div class="section-inner">
+    <div class="banners">
+      <a href="https://wa.me/5544997230648" target="_blank" class="banner b-blue">
+        <div><div class="b-badge">🍎 Apple</div><h3>Película 9H para todos os iPhones</h3><p>Full cover, anti-espião e privacidade disponíveis</p></div>
+        <img class="b-img" id="banner-iphone-img" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-blacktitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693009244098" alt="iPhone" onerror="this.style.display='none'">
+      </a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="banner b-purple">
+        <div><div class="b-badge">⚡ Turbo</div><h3>Carregador 20W para iPhone</h3><p>Compatible com Lightning e USB-C</p></div>
+        <span style="font-size:80px;flex-shrink:0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.3))">⚡</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== XIAOMIS ===== -->
+<section class="section" id="xiaomis" style="background:var(--gray-50)">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>🟠 <em>Xiaomi</em> — Todos os modelos</h2>
+      <a href="https://wa.me/5544997230648" target="_blank" class="see-all">Ver todos →</a>
+    </div>
+    <p class="sec-sub">Capinhas e acessórios para Xiaomi, POCO e Redmi</p>
+    <div class="products-grid" id="xiaomi-grid"></div>
+  </div>
+</section>
+
+<div class="section" style="padding-top:0;padding-bottom:24px">
+  <div class="section-inner">
+    <div class="banners">
+      <a href="https://wa.me/5544997230648" target="_blank" class="banner b-orange">
+        <div><div class="b-badge">🟠 Xiaomi</div><h3>Película 9H para todo Xiaomi e POCO</h3><p>Full cover e privacidade para todos os modelos</p></div>
+        <img class="b-img" src="https://fdn2.gsmarena.com/vv/bigpic/xiaomi-14-ultra.jpg" alt="Xiaomi" onerror="this.style.display='none'">
+      </a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="banner b-green">
+        <div><div class="b-badge">📦 Kit</div><h3>Kit Capinha + Película com 30% OFF</h3><p>Para qualquer marca e modelo disponível</p></div>
+        <span style="font-size:80px;flex-shrink:0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.2))">🎁</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CAPINHAS OUTRAS MARCAS -->
+<section class="section" id="capinhas">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>🛡️ <em>Capinhas</em> – Samsung, Moto & mais</h2>
+      <a href="https://wa.me/5544997230648" target="_blank" class="see-all">Ver todos →</a>
+    </div>
+    <div class="products-grid" id="outros-grid"></div>
+  </div>
+</section>
+
+<div class="brands-strip">
+  <div class="brands-inner">
+    <h3>Capinhas disponíveis para todas as marcas</h3>
+    <div class="brands-logos">
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🍎 iPhone</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🟠 Xiaomi</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🔵 Samsung</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">⚡ Motorola</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">⚫ POCO</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🟥 Redmi</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🟢 Realme</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🔴 OnePlus</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🟡 ASUS</a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="brand-pill">🔷 LG</a>
+    </div>
+  </div>
+</div>
+
+<!-- PELÍCULAS -->
+<section class="section" id="peliculas" style="background:var(--gray-50)">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>🔲 <em>Películas</em> de Vidro 9H</h2>
+      <a href="https://wa.me/5544997230648" target="_blank" class="see-all">Ver todos →</a>
+    </div>
+    <div class="products-grid">
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card">
+        <div class="product-img"><div class="badge-novo">9H</div><span style="font-size:72px">🔲</span></div>
+        <div class="product-info"><div class="lbl-apple">Apple</div><h3>Película 9H iPhone 16 Pro Max Full Cover</h3><div class="price-old">R$ 39,90</div><div class="price-new">R$ 24,90</div><div class="price-pix">✅ R$ 23,65 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div>
+      </a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card">
+        <div class="product-img"><div class="badge-sale">LEVE 2</div><span style="font-size:72px">⬛</span></div>
+        <div class="product-info"><div class="lbl-xiaomi">Xiaomi</div><h3>Película 3D Xiaomi 14 Ultra Anti-espião</h3><div class="price-old">R$ 34,90</div><div class="price-new">R$ 19,90</div><div class="price-pix">✅ R$ 18,90 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div>
+      </a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card">
+        <div class="product-img"><span style="font-size:72px">🛡️</span></div>
+        <div class="product-info"><div class="lbl-other">Samsung</div><h3>Película Privacidade Samsung Galaxy</h3><div class="price-old">R$ 44,90</div><div class="price-new">R$ 29,90</div><div class="price-pix">✅ R$ 28,40 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div>
+      </a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card">
+        <div class="product-img"><div class="badge-novo">KIT</div><span style="font-size:72px">📦</span></div>
+        <div class="product-info"><div class="lbl-other">Universal</div><h3>Kit 3 Películas – Qualquer modelo</h3><div class="price-old">R$ 69,90</div><div class="price-new">R$ 39,90</div><div class="price-pix">✅ R$ 37,90 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CARREGADORES -->
+<section class="section" id="carregadores">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>⚡ <em>Carregadores</em> Turbo</h2>
+      <a href="https://wa.me/5544997230648" target="_blank" class="see-all">Ver todos →</a>
+    </div>
+    <div class="products-grid">
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><div class="badge-novo">65W GaN</div><span style="font-size:72px">⚡</span></div><div class="product-info"><div class="lbl-other">Turbo</div><h3>Carregador 65W GaN – 3 Portas USB-C/A</h3><div class="price-old">R$ 129,90</div><div class="price-new">R$ 89,90</div><div class="price-pix">✅ R$ 85,40 no Pix</div><div class="installment">ou 6x R$ 14,98</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><div class="badge-sale">-35%</div><span style="font-size:72px">🔋</span></div><div class="product-info"><div class="lbl-apple">Apple</div><h3>Carregador iPhone 20W USB-C Lightning</h3><div class="price-old">R$ 79,90</div><div class="price-new">R$ 49,90</div><div class="price-pix">✅ R$ 47,40 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><span style="font-size:72px">🚗</span></div><div class="product-info"><div class="lbl-other">Universal</div><h3>Carregador Veicular 45W – 2 USB-C</h3><div class="price-old">R$ 69,90</div><div class="price-new">R$ 44,90</div><div class="price-pix">✅ R$ 42,65 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><div class="badge-novo">SEM FIO</div><span style="font-size:72px">🔌</span></div><div class="product-info"><div class="lbl-other">Qi 15W</div><h3>Carregador Sem Fio 15W MagSafe Compat.</h3><div class="price-old">R$ 99,90</div><div class="price-new">R$ 64,90</div><div class="price-pix">✅ R$ 61,65 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FONES -->
+<section class="section" id="fones" style="background:var(--gray-50)">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2>🎧 <em>Fones</em> de Ouvido</h2>
+      <a href="https://wa.me/5544997230648" target="_blank" class="see-all">Ver todos →</a>
+    </div>
+    <div class="products-grid">
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><div class="badge-novo">ANC</div><span style="font-size:72px">🎧</span></div><div class="product-info"><div class="lbl-other">BT Pro</div><h3>Fone Bluetooth 5.3 Cancelamento de Ruído</h3><div class="price-old">R$ 199,90</div><div class="price-new">R$ 129,90</div><div class="price-pix">✅ R$ 123,40 no Pix</div><div class="installment">ou 12x R$ 10,83</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><div class="badge-sale">-40%</div><span style="font-size:72px">🎵</span></div><div class="product-info"><div class="lbl-other">InEar</div><h3>Fone TWS In-Ear – 30h de Bateria</h3><div class="price-old">R$ 149,90</div><div class="price-new">R$ 89,90</div><div class="price-pix">✅ R$ 85,40 no Pix</div><div class="installment">ou 6x R$ 14,98</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><span style="font-size:72px">🎤</span></div><div class="product-info"><div class="lbl-other">Gamer</div><h3>Headset Gamer USB com Microfone</h3><div class="price-old">R$ 119,90</div><div class="price-new">R$ 79,90</div><div class="price-pix">✅ R$ 75,90 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+      <a href="https://wa.me/5544997230648" target="_blank" class="product-card"><div class="product-img"><div class="badge-novo">USB-C</div><span style="font-size:72px">🎶</span></div><div class="product-info"><div class="lbl-apple">Apple Compat.</div><h3>EarPods USB-C – iPhone 15 / 16</h3><div class="price-old">R$ 69,90</div><div class="price-new">R$ 44,90</div><div class="price-pix">✅ R$ 42,65 no Pix</div><a class="btn-add" href="https://wa.me/5544997230648" target="_blank">🛒 Comprar agora</a></div></a>
+    </div>
+  </div>
+</section>
+
+<div class="features">
+  <div class="features-inner">
+    <div class="feature"><span class="fi">🚚</span><h4>Frete Grátis</h4><p>Pedidos acima de R$99</p></div>
+    <div class="feature"><span class="fi">💳</span><h4>12x sem juros</h4><p>No cartão de crédito</p></div>
+    <div class="feature"><span class="fi">🔒</span><h4>Compra Segura</h4><p>Pagamento protegido</p></div>
+    <div class="feature"><span class="fi">💬</span><h4>WhatsApp 24h</h4><p>(44) 99723-0648</p></div>
+    <div class="feature"><span class="fi">↩️</span><h4>Troca em 7 dias</h4><p>Sem burocracia</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Tech<span>Cell</span> Store</div>
+        <p class="footer-desc">Especialistas em capinhas, películas, carregadores e fones para iPhone, Xiaomi, Samsung, Motorola e muito mais.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pay-badge">💲 Pix</span><span class="pay-badge">💳 Cartão</span><span class="pay-badge">🏦 Boleto</span></div>
+      </div>
+      <div class="footer-col">
+        <h5>Categorias</h5>
+        <a href="#">iPhones</a><a href="#">Xiaomi / POCO</a><a href="#">Capinhas</a><a href="#">Películas</a><a href="#">Carregadores</a><a href="#">Fones</a>
+      </div>
+      <div class="footer-col">
+        <h5>Marcas</h5>
+        <a href="#">Apple / iPhone</a><a href="#">Xiaomi / Redmi</a><a href="#">Samsung</a><a href="#">Motorola</a><a href="#">POCO / Realme</a>
+      </div>
+      <div class="footer-col">
+        <h5>Atendimento</h5>
+        <a href="https://wa.me/5544997230648" target="_blank">📲 WhatsApp</a><a href="#">Rastrear Pedido</a><a href="#">Troca & Devolução</a><a href="#">Dúvidas Frequentes</a><a href="#">Sobre nós</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TechCell Store. Todos os direitos reservados.</p>
+      <p>Contato: (44) 99723-0648</p>
+    </div>
+  </div>
+</footer>
+
+<div class="whats-float">
+  <div class="whats-bubble">💬 Compre pelo WhatsApp!</div>
+  <a href="https://wa.me/5544997230648" target="_blank" class="whats-btn" title="WhatsApp (44) 99723-0648">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// === DADOS DOS PRODUTOS ===
+const WA = 'https://wa.me/5544997230648';
+
+const iphones = [
+  {name:'iPhone 16 Pro Max – Capinha Silicone',badge:'novo',badgeTxt:'NOVO 2024',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1723852654135',old:'R$ 69,90',price:'R$ 44,90',pix:'R$ 42,65',parc:'4x R$ 11,23'},
+  {name:'iPhone 16 Pro – Capinha MagSafe',badge:'novo',badgeTxt:'NOVO 2024',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1723852654135',old:'R$ 59,90',price:'R$ 39,90',pix:'R$ 37,90',parc:'3x R$ 13,30'},
+  {name:'iPhone 15 Pro Max – Capinha Premium',badge:'top',badgeTxt:'TOP VENDA',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-blacktitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693009244098',old:'R$ 54,90',price:'R$ 34,90',pix:'R$ 33,15',parc:'3x R$ 11,63'},
+  {name:'iPhone 15 Pro – Capinha Antichoque',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693009244098',old:'R$ 49,90',price:'R$ 32,90',pix:'R$ 31,25',parc:'3x R$ 10,97'},
+  {name:'iPhone 15 Plus – Capinha Transparente',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-plus-finish-select-202309-6-7inch-pink?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692910114004',old:'R$ 44,90',price:'R$ 29,90',pix:'R$ 28,40',parc:'3x R$ 9,97'},
+  {name:'iPhone 15 – Capinha Silicone',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-yellow?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692910114004',old:'R$ 39,90',price:'R$ 24,90',pix:'R$ 23,65',parc:'3x R$ 8,30'},
+  {name:'iPhone 14 Pro Max – Capinha Couro',badge:'sale',badgeTxt:'-35%',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-select-202209-6-7inch-deeppurple?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661028954816',old:'R$ 44,90',price:'R$ 27,90',pix:'R$ 26,50',parc:'2x R$ 13,95'},
+  {name:'iPhone 14 Pro – Capinha com Anel',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-select-202209-6-1inch-spacegray?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661028954816',old:'R$ 39,90',price:'R$ 24,90',pix:'R$ 23,65',parc:'2x R$ 12,45'},
+  {name:'iPhone 14 Plus – Capinha Glitter',badge:'sale',badgeTxt:'-40%',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-plus-finish-select-202209-6-7inch-starlight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661028944666',old:'R$ 34,90',price:'R$ 19,90',pix:'R$ 18,90',parc:'2x R$ 9,95'},
+  {name:'iPhone 14 – Capinha Transparente',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661028944666',old:'R$ 34,90',price:'R$ 19,90',pix:'R$ 18,90',parc:'2x R$ 9,95'},
+  {name:'iPhone 13 Pro Max – Capinha Militar',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-finish-select-202207-6-7inch-gold?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1657162680000',old:'R$ 34,90',price:'R$ 21,90',pix:'R$ 20,80',parc:'2x R$ 10,95'},
+  {name:'iPhone 13 Pro – Capinha Anti-risco',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-finish-select-202207-6-1inch-sierrablue?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1657162680000',old:'R$ 29,90',price:'R$ 18,90',pix:'R$ 17,95',parc:'2x R$ 9,45'},
+  {name:'iPhone 13 – Capinha Silicone Colorida',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-pink?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1657162887000',old:'R$ 29,90',price:'R$ 18,90',pix:'R$ 17,95',parc:'2x R$ 9,45'},
+  {name:'iPhone 12 / 12 Pro – Capinha Anti-impacto',badge:'sale',badgeTxt:'-45%',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-purple-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1617130317000',old:'R$ 29,90',price:'R$ 16,90',pix:'R$ 16,05',parc:'2x R$ 8,45'},
+  {name:'iPhone SE (2022) – Capinha Resistente',badge:'',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-2022-select-product-blue?wid=940&hei=1112&fmt=png-alpha&.v=1645120661727',old:'R$ 24,90',price:'R$ 14,90',pix:'R$ 14,15',parc:'2x R$ 7,45'},
+  {name:'iPhone 11 – Capinha Transparente',badge:'sale',badgeTxt:'-50%',brand:'apple',img:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-11-select-2019-family?wid=882&hei=1058&fmt=jpeg&qlt=90&.v=1567022175704',old:'R$ 24,90',price:'R$ 12,90',pix:'R$ 12,25',parc:'2x R$ 6,45'},
+];
+
+const xiaomis = [
+  {name:'Xiaomi 14 Ultra – Capinha Premium',badge:'novo',badgeTxt:'NOVO 2024',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-14-ultra.jpg',old:'R$ 54,90',price:'R$ 34,90',pix:'R$ 33,15',parc:'3x R$ 11,63'},
+  {name:'Xiaomi 14 Pro – Capinha Silicone',badge:'novo',badgeTxt:'NOVO 2024',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-14-pro.jpg',old:'R$ 49,90',price:'R$ 29,90',pix:'R$ 28,40',parc:'3x R$ 9,97'},
+  {name:'Xiaomi 14 – Capinha Antichoque',badge:'',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-14.jpg',old:'R$ 44,90',price:'R$ 27,90',pix:'R$ 26,50',parc:'3x R$ 9,30'},
+  {name:'Xiaomi 13 Pro – Capinha Transparente',badge:'sale',badgeTxt:'-30%',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-13-pro.jpg',old:'R$ 39,90',price:'R$ 24,90',pix:'R$ 23,65',parc:'2x R$ 12,45'},
+  {name:'Xiaomi 13 – Capinha com Anel 360°',badge:'',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-13.jpg',old:'R$ 34,90',price:'R$ 21,90',pix:'R$ 20,80',parc:'2x R$ 10,95'},
+  {name:'Xiaomi 12 – Capinha Couro Premium',badge:'',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-12.jpg',old:'R$ 34,90',price:'R$ 19,90',pix:'R$ 18,90',parc:'2x R$ 9,95'},
+  {name:'Redmi Note 13 Pro – Capinha Militar',badge:'top',badgeTxt:'TOP VENDA',brand:'redmi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-13-pro.jpg',old:'R$ 34,90',price:'R$ 21,90',pix:'R$ 20,80',parc:'2x R$ 10,95'},
+  {name:'Redmi Note 13 – Capinha Silicone',badge:'',brand:'redmi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-13.jpg',old:'R$ 29,90',price:'R$ 18,90',pix:'R$ 17,95',parc:'2x R$ 9,45'},
+  {name:'Redmi Note 12 – Kit Capinha + Película',badge:'sale',badgeTxt:'-45%',brand:'redmi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-12.jpg',old:'R$ 44,90',price:'R$ 24,90',pix:'R$ 23,65',parc:'2x R$ 12,45'},
+  {name:'POCO X6 Pro – Capinha Anti-risco',badge:'novo',badgeTxt:'POCO',brand:'poco',img:'https://fdn2.gsmarena.com/vv/bigpic/poco-x6-pro.jpg',old:'R$ 34,90',price:'R$ 21,90',pix:'R$ 20,80',parc:'2x R$ 10,95'},
+  {name:'POCO F5 – Capinha Transparente',badge:'',brand:'poco',img:'https://fdn2.gsmarena.com/vv/bigpic/poco-f5.jpg',old:'R$ 29,90',price:'R$ 18,90',pix:'R$ 17,95',parc:'2x R$ 9,45'},
+  {name:'POCO M6 Pro – Capinha Básica',badge:'sale',badgeTxt:'-40%',brand:'poco',img:'https://fdn2.gsmarena.com/vv/bigpic/poco-m6-pro.jpg',old:'R$ 24,90',price:'R$ 14,90',pix:'R$ 14,15',parc:'2x R$ 7,45'},
+  {name:'Redmi 13C – Capinha Silicone',badge:'',brand:'redmi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-13c.jpg',old:'R$ 24,90',price:'R$ 14,90',pix:'R$ 14,15',parc:'2x R$ 7,45'},
+  {name:'Xiaomi 11T Pro – Capinha Militar',badge:'sale',badgeTxt:'-40%',brand:'xiaomi',img:'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-11t-pro.jpg',old:'R$ 34,90',price:'R$ 18,90',pix:'R$ 17,95',parc:'2x R$ 9,45'},
+];
+
+const outros = [
+  {name:'Samsung Galaxy S24 Ultra – Capinha MagSafe',badge:'top',badgeTxt:'TOP',brand:'samsung',img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g.jpg',old:'R$ 49,90',price:'R$ 29,90',pix:'R$ 28,40',parc:'3x R$ 9,97'},
+  {name:'Samsung Galaxy S23 Ultra – Capinha Militar',badge:'',brand:'samsung',img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-ultra-5g.jpg',old:'R$ 44,90',price:'R$ 27,90',pix:'R$ 26,50',parc:'3x R$ 9,30'},
+  {name:'Motorola Edge 50 Pro – Capinha Transparente',badge:'sale',badgeTxt:'-35%',brand:'moto',img:'https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-50-pro.jpg',old:'R$ 34,90',price:'R$ 21,90',pix:'R$ 20,80',parc:'2x R$ 10,95'},
+  {name:'Samsung Galaxy A55 – Capinha Silicone',badge:'',brand:'samsung',img:'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a55.jpg',old:'R$ 29,90',price:'R$ 18,90',pix:'R$ 17,95',parc:'2x R$ 9,45'},
+];
+
+function badge(b,t){
+  if(!b)return'';
+  const cls = b==='novo'?'badge-novo':b==='top'?'badge-top':'badge-sale';
+  return `<div class="${cls}">${t||''}</div>`;
+}
+
+function lbl(brand){
+  if(brand==='apple')return'<div class="lbl-apple">Apple</div>';
+  if(brand==='xiaomi')return'<div class="lbl-xiaomi">Xiaomi</div>';
+  if(brand==='redmi')return'<div class="lbl-xiaomi">Redmi</div>';
+  if(brand==='poco')return'<div class="lbl-xiaomi">POCO</div>';
+  if(brand==='samsung')return'<div class="lbl-other">Samsung</div>';
+  return'<div class="lbl-other">Motorola</div>';
+}
+
+function card(p){
+  return `
+  <a href="${WA}" target="_blank" class="product-card">
+    <div class="product-img">
+      ${badge(p.badge,p.badgeTxt)}
+      <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="fallback">📱</span>
+    </div>
+    <div class="product-info">
+      ${lbl(p.brand)}
+      <h3>${p.name}</h3>
+      <div class="price-old">${p.old}</div>
+      <div class="price-new">${p.price}</div>
+      <div class="price-pix">✅ ${p.pix} no Pix</div>
+      ${p.parc?`<div class="installment">ou ${p.parc} s/ juros</div>`:''}
+      <a class="btn-add" href="${WA}" target="_blank">🛒 Comprar agora</a>
+    </div>
+  </a>`;
+}
+
+document.getElementById('iphone-grid').innerHTML = iphones.map(card).join('');
+document.getElementById('xiaomi-grid').innerHTML = xiaomis.map(card).join('');
+document.getElementById('outros-grid').innerHTML = outros.map(card).join('');
+
+// Whats bubble
+setTimeout(()=>{const b=document.querySelector('.whats-bubble');if(b)b.style.display='none';},5000);
+
+// Nav active
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  document.querySelectorAll('.nav-inner a').forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+cur)a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
